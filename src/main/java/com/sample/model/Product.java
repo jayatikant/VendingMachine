@@ -1,16 +1,24 @@
 package com.sample.model;
 
 public class Product {
-
+	
+	private static final Product EMPTY_PRODUCT=new Product();
 	private String code;
 	private Integer cost;
 	private Integer quantity;
+
+	public Product() {
+	}
 	
 	public Product(String code, Integer cost, Integer quantity) {
 		super();
 		this.code = code;
 		this.cost = cost;
-		this.quantity = quantity;
+		this.setQuantity(quantity);
+	}
+	
+	public static Product  getEmptyProduct(){
+		return EMPTY_PRODUCT;
 	}
 
 	public Product(String code) {
@@ -47,5 +55,9 @@ public class Product {
 	public int hashCode() {
 		int result = 31 + ((code == null) ? 0 : code.hashCode());
 		return result;
+	}
+
+	public void setQuantity(Integer quantity) {
+		this.quantity = quantity;
 	}
 }
